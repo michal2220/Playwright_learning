@@ -1,5 +1,6 @@
 import { test } from "@playwright/test"
-import { ProductsPage } from "../page-objects/ProductsPage"
+import { ProductsPage } from "../page-objects/ProductsPage.js"
+import { Navigation } from "../page-objects/Nagivation.js"
 
 test.only("New user full end-to-end test journey", async ({ page }) => {
 
@@ -8,5 +9,7 @@ test.only("New user full end-to-end test journey", async ({ page }) => {
     await productsPage.addProductToBasket(0)
     await productsPage.addProductToBasket(1)
     await productsPage.addProductToBasket(2)
-    // await page.pause()
+    const navigation = new Navigation(page)
+    await navigation.goToCheckout()
+    await page.pause()
 })
