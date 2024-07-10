@@ -9,7 +9,6 @@ export class LoginPage {
 
     }
 
-
     moveToSignup = async () => {
         await this.moveToSignupButton.waitFor()
         await this.moveToSignupButton.click()
