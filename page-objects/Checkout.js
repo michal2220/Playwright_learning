@@ -5,7 +5,6 @@ export class Checkout {
 
     constructor(page) {
         this.page = page
-
         this.basketCards = page.locator('[data-qa="basket-card"]')
         this.basketItemPrice = page.locator('[data-qa="basket-item-price"]')
         this.basketItemRemoveButton = page.locator('[data-qa="basket-card-remove-item"]')
@@ -32,6 +31,6 @@ export class Checkout {
     continueToCheckout = async () => {
         await this.continueToCheckoutButton.waitFor()
         await this.continueToCheckoutButton.click()
-        await this.page.waitForURL("/login",{timeout: 3000})
+        await this.page.waitForURL(/\/login/,{timeout: 3000})
     }
 }
