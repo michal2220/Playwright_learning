@@ -48,11 +48,9 @@ export class PaymentPage {
         const allInnerTotalValue = await this.totalValue.innerText()
         const allInnerTotalValueString = allInnerTotalValue.replace("$", "")
         const totalValueNumber = parseInt(allInnerTotalValueString, 10)
-
         const allInnerDiscountValue = await this.totalWithDiscount.innerText()
         const discountValueString = allInnerDiscountValue.replace("$", "")
         const discountValueNumber = parseInt(discountValueString, 10)
-
         expect(discountValueNumber).toBeLessThan(totalValueNumber)
     }
 
