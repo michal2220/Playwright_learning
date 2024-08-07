@@ -5,6 +5,9 @@ export const getLoginToken = async () => {
         method: "POST",
         body: JSON.stringify({ "username": "admin", "password": "Admin123" })
     })
+    if(response.status !== 200) {
+        throw new Error("An error occured trying to retreive the login token.")
+    }
     const body = await response.json()
     return body.token
 }
