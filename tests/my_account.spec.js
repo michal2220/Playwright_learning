@@ -4,8 +4,13 @@ import { getLoginToken } from "../api-calls/getLoginToken"
 
 test.only("My account using cookie injection", async ({ page }) => {
     const loginToken = await getLoginToken()
-    console.warn({loginToken})
+    console.warn({ loginToken })
 
     const myAccount = new myAccountPage(page)
     await myAccount.visit()
-})
+    await page.evaluate(([loginTokenInsideBrowserCode]) => {
+        document.cookie = "token=" + loginTokenInsideBrowserCode
+    }, [loginToken])
+
+    await myAccount.visit()
+ })
