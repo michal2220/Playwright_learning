@@ -1,3 +1,5 @@
+import * as dotenv from "dotenv"
+dotenv.config()
 import { test } from "@playwright/test"
 import { myAccountPage } from "../page-objects/MyAccountPage"
 import { getLoginToken } from "../api-calls/getLoginToken"
